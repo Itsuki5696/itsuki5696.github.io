@@ -1,0 +1,40 @@
+<div class="app-container">
+    <div class="row g-0">
+        <div class="col-xxl-2 col-xl-3 col-lg-4 col-md-12 d-none d-lg-flex">
+            <nav class="app-sidenav">
+                <h3 class="text-center">Itsuki5696</h3>
+
+                <ul class="nav-list row">
+                    @for (item of tabs; track item.id) {
+                    <li class="nav-item" [routerLink]="item.router" [class.active]="IsPageActive(item.router[0])">
+                        <a class="nav-link"><i class="fad" [ngClass]="item.symbol"></i> {{item.text | translate}}</a>
+                    </li>
+                    }
+                </ul>
+                <div style="flex: 1"></div>
+                <div class="nav-bottom-item" [routerLink]="['/settings']" [class.active]="IsPageActive('/settings')">
+                    <a class="nav-link"><i class="fad fa-gear"></i> {{'navbar.settings' | translate}}</a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="col-xxl-10 col-xl-9 col-lg-8 col-md-12 app-body">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="d-md-block d-lg-none row g-0">
+            <nav class="app-sidenav">
+                <ul class="nav-list row">
+                    @for (item of tabs; track item.id) {
+                    <li class="col nav-item" [routerLink]="item.router"
+                        [class.active]="IsPageActive(item.router[0])">
+                        <a class="nav-link"><i class="fad" [ngClass]="item.symbol"></i> {{item.text | translate}}</a>
+                    </li>
+                    }
+                    <li class="col nav-item" [routerLink]="['/settings']" [class.active]="IsPageActive('/settings')">
+                        <a class="nav-link"><i class="fad fa-gear"></i> {{'navbar.settings' | translate}}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
