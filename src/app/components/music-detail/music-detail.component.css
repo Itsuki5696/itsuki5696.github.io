@@ -4,3 +4,14 @@
     border-radius: var(--bs-border-radius);
     border: var(--bs-border-width) solid var(--bs-border-color-translucent)
 }
+
+[app-audio-player] {
+    position: sticky;
+    box-sizing: border-box;
+    bottom: 0rem;
+    border: var(--bs-border-width) solid var(--bs-border-color-translucent);
+    border-radius: var(--bs-border-radius-xl);
+    width: 100%;
+    overflow: hidden;
+    margin-top: 1rem;
+}

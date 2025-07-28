@@ -4,16 +4,18 @@ import { MediaService } from '../../services/media.service';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule, TranslatePipe, TranslateDirective } from '@ngx-translate/core';
+import { AudioPlayerComponent } from "../audio-player/audio-player.component";
 
 @Component({
   selector: 'app-music-detail',
-  imports: [RouterOutlet, RouterModule, CommonModule, NgbModule, TranslateModule, TranslatePipe, TranslateDirective],
+  imports: [RouterOutlet, RouterModule, CommonModule, NgbModule, TranslateModule, TranslatePipe, TranslateDirective, AudioPlayerComponent],
   templateUrl: './music-detail.component.html',
   styleUrl: './music-detail.component.css'
 })
 export class MusicDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private mediaSrv = inject(MediaService);
+  src: string = "";
 
   // 1️⃣ 取得路由参数
   album = computed(() => this.route.snapshot.paramMap.get('album') ?? '');

@@ -11,6 +11,7 @@ import {
   TranslateDirective,
   TranslateModule
 } from "@ngx-translate/core";
+import { PlyrComponent, PlyrModule } from 'ngx-plyr';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit {
   title = 'aninextweb';
   tabs: any = [];
   static Version: string = "0.2507.1.0";
-  static CompileDate: string = "6 July 2025";
+  static CompileDate: string = "20250728";
+  static Branch: string = "dev"
   colorPreference: number = localStorage["colorPreference"] ? localStorage["colorPreference"] : 0;
   fontSize: number = localStorage["fontSize"] ? localStorage["fontSize"] : 0;
   highContrast: number = localStorage["highContrast"] ? localStorage["highContrast"] : 1;

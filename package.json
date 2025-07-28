@@ -23,7 +23,9 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "fuse.js": "^7.1.0",
+    "ngx-plyr": "^3.0.1",
     "ngx-translate": "^0.0.1-security",
+    "plyr": "^3.7.8",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
