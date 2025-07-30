@@ -68412,7 +68412,7 @@ var MediaService = class _MediaService {
       keywords: ["Riria."],
       type: "music",
       cover: "./cover/cover_riria_kiseki.jpg",
-      file: "./music/riria/04. \u9A19\u3055\u308C\u306A\u3044\u304B\u3089\u306D\u3002.mp3",
+      file: "./music/riria/kiseki/04.mp3",
       year: 2024
     },
     {
@@ -68422,7 +68422,7 @@ var MediaService = class _MediaService {
       keywords: ["Riria."],
       type: "music",
       cover: "./cover/cover_riria.jpg",
-      file: "./music/riria/01. \u5931\u604B\u30BD\u30F3\u30AF\u3099\u6CA2\u5C71\u8074\u3044\u3066 \u6CE3\u3044\u3066\u306F\u3099\u304B\u308A\u306E\u79C1\u306F\u3082\u3046\u3002.mp3",
+      file: "./music/riria/summer-time-rendering/01.mp3",
       year: 2022
     }
   ];
