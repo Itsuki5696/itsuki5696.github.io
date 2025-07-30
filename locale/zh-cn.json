@@ -1,0 +1,36 @@
+{
+    "navbar": {
+        "home": "主页",
+        "music": "音乐",
+        "anime": "动漫",
+        "lightnovel": "轻小说",
+        "settings": "设置"
+    },
+    "settings": {
+        "settings": "设置",
+        "general": "通用",
+        "displaymode": "显示",
+        "displaymode-d": "默认采用系统设置",
+        "colortheme": "主题",
+        "colors": {
+            "sys-set": "系统设置",
+            "light": "浅色",
+            "dark": "深色"
+        },
+        "contrast": "对比度",
+        "contrasts": {
+            "normal": "正常",
+            "high": "高对比度"
+        },
+        "fontsize": "字号",
+        "fontsize-d": "默认采用系统设置",
+        "changelog": "更新历史",
+        "license": "许可证",
+        "language": "显示语言",
+        "language-d": "默认显示语言为英语。"
+    },
+    "music": {
+        "search": "搜索...",
+        "noresult": "无结果"
+    }
+}
