@@ -9,8 +9,12 @@ import Plyr from 'plyr';
 })
 export class AudioPlayerComponent implements OnInit {
   @Input() src: string = "";
+  @Input() play: boolean = false;
 
   ngOnInit(): void {
       const player = new Plyr('#audio-player');
+      if (this.play) {
+        player.play();
+      }
   }
 }

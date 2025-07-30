@@ -1,8 +1,17 @@
 <div class="container">
     <div class="row g-2">
         <h2 translate="navbar.music"></h2>
+        <div class="col-12">
+            <div class="d-flex justify-content-center search-box pb-4">
+                <input class="form-control" [placeholder]="'music.search' | translate" type="search" (input)="onSearchChanged($event)" />
+            </div>
+        </div>
+        <h4>专辑</h4>
+        @if (musicList.length == 0) {
+        <p class="text-muted text-center" translate="music.noresult"></p>
+        }
         @for (group of musicList | groupByAlbum; track group) {
-        <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
             <a class="card h-100 text-decoration-none" [routerLink]="['/music', group.album]">
                 <img [src]="group.cover" class="card-img-top" alt="...">
                 <div class="card-body">

@@ -1,39 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-	font-family: 'Ubuntu';
-	src: url('../fonts/Ubuntu-Th.ttf');
-	font-weight: 100;
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu-Th.ttf');
+    font-weight: 100;
 }
 
 @font-face {
-	font-family: 'Ubuntu';
-	src: url('../fonts/Ubuntu-L.ttf');
-	font-weight: 300;
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu-L.ttf');
+    font-weight: 300;
 }
 
 @font-face {
-	font-family: 'Ubuntu';
-	src: url('../fonts/Ubuntu-R.ttf');
-	font-weight: 400;
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu-R.ttf');
+    font-weight: 400;
 }
 
 @font-face {
-	font-family: 'Ubuntu Mono';
-	src: url('../fonts/UbuntuMono-R.ttf');
-	font-weight: 400;
+    font-family: 'Ubuntu Mono';
+    src: url('../fonts/UbuntuMono-R.ttf');
+    font-weight: 400;
 }
 
 @font-face {
-	font-family: 'Ubuntu';
-	src: url('../fonts/Ubuntu-M.ttf');
-	font-weight: 500;
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu-M.ttf');
+    font-weight: 500;
 }
 
 @font-face {
-	font-family: 'Ubuntu';
-	src: url('../fonts/Ubuntu-B.ttf');
-	font-weight: 600;
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu-B.ttf');
+    font-weight: 600;
 }
 
 @font-face {
@@ -66,7 +66,40 @@
     font-weight: 350
 }
 
-:root, html, body, * {
+@font-face {
+    font-family: 'Koruri';
+    src: url('../fonts/Koruri-Extrabold.ttf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Koruri';
+    src: url('../fonts/Koruri-Bold.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Koruri';
+    src: url('../fonts/Koruri-Semibold.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Koruri';
+    src: url('../fonts/Koruri-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Koruri';
+    src: url('../fonts/Koruri-Light.ttf');
+    font-weight: 300;
+}
+
+:root,
+html,
+body,
+* {
     --bs-font-sans-serif: 'Ubuntu', 'Microsoft YaHei UI', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-family: var(--bs-font-sans-serif);
 }
@@ -111,11 +144,17 @@
 
 .app-container .app-body {
     height: 100% !important;
-    padding: 2rem;
+    padding-top: 2rem;
     background-color: var(--bs-body-bg);
     color: var(--bs-body-color);
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+@media (min-width: 992px) {
+    .app-container .app-body {
+        padding: 2rem;
+    }
 }
 
 .app-sidenav>ul.nav-list {
@@ -124,7 +163,8 @@
     list-style: none !important;
 }
 
-ul.nav-list>li.nav-item, .nav-bottom-item {
+ul.nav-list>li.nav-item,
+.nav-bottom-item {
     padding: .5rem 0;
     display: flex;
     align-items: center;
@@ -135,23 +175,31 @@ ul.nav-list>li.nav-item, .nav-bottom-item {
     border: var(--bs-border-width) solid transparent;
 }
 
-ul.nav-list>li.nav-item:hover, li.nav-item.active, .nav-bottom-item:hover, .nav-bottom-item.active {
+ul.nav-list>li.nav-item:hover,
+li.nav-item.active,
+.nav-bottom-item:hover,
+.nav-bottom-item.active {
     background-color: rgba(var(--bs-tertiary-color-rgb), .05) !important;
     border: var(--bs-border-width) solid var(--bs-border-color-translucent) !important;
 }
 
-ul.nav-list>li.nav-item:focus, ul.nav-list>li.nav-item:active, .nav-bottom-item:focus, .nav-bottom-item:active {
+ul.nav-list>li.nav-item:focus,
+ul.nav-list>li.nav-item:active,
+.nav-bottom-item:focus,
+.nav-bottom-item:active {
     background-color: rgba(var(--bs-tertiary-color-rgb), .1);
 }
 
-.d-lg-flex li.nav-item > a.nav-link, .nav-bottom-item > .nav-link {
+.d-lg-flex li.nav-item>a.nav-link,
+.nav-bottom-item>.nav-link {
     align-items: center;
     display: flex;
     padding: 0 .5rem;
     justify-content: left;
 }
 
-.d-lg-flex li.nav-item::before, .nav-bottom-item::before {
+.d-lg-flex li.nav-item::before,
+.nav-bottom-item::before {
     content: "";
     background: transparent;
     transform: translate3d(-200%, 0, 0);
@@ -164,7 +212,8 @@ ul.nav-list>li.nav-item:focus, ul.nav-list>li.nav-item:active, .nav-bottom-item:
     transform: translate3d(0, 0, 0);
 }
 
-.d-lg-flex li.nav-item.active::before, .nav-bottom-item.active::before {
+.d-lg-flex li.nav-item.active::before,
+.nav-bottom-item.active::before {
     content: "";
     background: var(--bs-primary);
     transform: translate3d(-200%, 0, 0);
@@ -177,19 +226,25 @@ ul.nav-list>li.nav-item:focus, ul.nav-list>li.nav-item:active, .nav-bottom-item:
     transform: translate3d(0, 0, 0);
 }
 
-.d-lg-flex li.nav-item.active:active::before, .nav-bottom-item.active:active::before {
+.d-lg-flex li.nav-item.active:active::before,
+.nav-bottom-item.active:active::before {
     height: .75rem !important;
     transition: height 0.1s;
     transform: translate3d(0, 0, 0);
 }
 
-.d-lg-flex ul.nav-list>li.nav-item:not(:last-child) {
-    margin-bottom: .5rem
+.d-lg-flex ul.nav-list {
+    gap: .5rem
 }
 
 .d-md-block ul.nav-list {
     display: flex;
     flex-wrap: nowrap;
+    gap: .5rem
+}
+
+.d-md-block ul.nav-list > li.nav-item:last-of-type {
+    margin-right: .5rem;
 }
 
 .d-md-block li.nav-item {
@@ -197,13 +252,16 @@ ul.nav-list>li.nav-item:focus, ul.nav-list>li.nav-item:active, .nav-bottom-item:
     padding: 0 !important;
     flex-direction: column;
     min-width: 5rem;
+    align-items: center;
 }
 
-.d-md-block li.nav-item > a.nav-link {
+.d-md-block li.nav-item>a.nav-link {
     align-items: center;
     display: flex;
-    padding: .5rem 1rem;
+    padding: .25rem .5rem;
     justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .d-md-block li.nav-item.active::after {
@@ -224,10 +282,6 @@ ul.nav-list>li.nav-item:focus, ul.nav-list>li.nav-item:active, .nav-bottom-item:
     transform: translate3d(0, 0, 0);
 }
 
-.d-md-block ul.nav-list>li.nav-item:not(:last-child) {
-    margin-right: .5rem;
-}
-
 /*[data-bs-theme=dark] .apexcharts-svg, canvas {
     filter: invert(1) hue-rotate(180deg) !important
 }*/
@@ -237,4 +291,8 @@ ul.nav-list>li.nav-item:focus, ul.nav-list>li.nav-item:active, .nav-bottom-item:
     -webkit-backdrop-filter: blur(50px) !important;
     border-radius: var(--bs-border-radius) !important;
     border: var(--bs-border-width) solid var(--bs-border-color-translucent) !important;
+}
+
+.search-box>input {
+    max-width: 30rem;
 }

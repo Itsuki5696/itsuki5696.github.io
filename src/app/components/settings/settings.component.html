@@ -1,60 +1,63 @@
 <div class="container">
     <div class="row g-2">
         <h2 translate="navbar.settings"></h2>
-        <h4 translate="settings.general"></h4>
         <div class="col-md-8 col-sm-12">
-            <div class="accordion-settings" ngbAccordion>
-                <div ngbAccordionItem>
-                    <h2 ngbAccordionHeader>
-                        <button ngbAccordionButton>
-                            <i class="fa fa-palette"></i>
-                            <div class="settings-title">
-                                <span class="main-title" translate="settings.displaymode"></span>
-                                <span class="description text-muted" translate="settings.displaymode-d"></span>
+            <div class="settings-list">
+                <h4 translate="settings.general"></h4>
+                <div class="accordion-settings" ngbAccordion>
+                    <div ngbAccordionItem>
+                        <h2 ngbAccordionHeader>
+                            <button ngbAccordionButton>
+                                <i class="fa fa-palette"></i>
+                                <div class="settings-title">
+                                    <span class="main-title" translate="settings.displaymode"></span>
+                                    <span class="description text-muted" translate="settings.displaymode-d"></span>
+                                </div>
+                            </button>
+                        </h2>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <i></i>
+                                <div class="settings-title">
+                                    <span class="main-title" translate="settings.colortheme"></span>
+                                </div>
+                                <div class="settings-option">
+                                    <select class="form-select" id="color-mode-select"
+                                        (change)="colorPreferenceChange()" [(ngModel)]="colorPreference"
+                                        aria-label="Color mode">
+                                        <option value="0" translate="settings.colors.sys-set"></option>
+                                        <option value="1" translate="settings.colors.light"></option>
+                                        <option value="2" translate="settings.colors.dark"></option>
+                                    </select>
+                                </div>
                             </div>
-                        </button>
-                    </h2>
-                    <div ngbAccordionCollapse>
-                        <div ngbAccordionBody>
-                            <i></i>
-                            <div class="settings-title">
-                                <span class="main-title" translate="settings.colortheme"></span>
-                            </div>
-                            <div class="settings-option">
-                                <select class="form-select" id="color-mode-select" (change)="colorPreferenceChange()"
-                                    [(ngModel)]="colorPreference" aria-label="Color mode">
-                                    <option value="0" translate="settings.colors.sys-set"></option>
-                                    <option value="1" translate="settings.colors.light"></option>
-                                    <option value="2" translate="settings.colors.dark"></option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="accordion-body">
-                            <i></i>
-                            <div class="settings-title">
-                                <span class="main-title" translate="settings.contrast"></span>
-                            </div>
-                            <div class="settings-option">
-                                <select class="form-select" id="color-mode-select" (change)="contrastChange()"
-                                    [(ngModel)]="highContrast" aria-label="Color mode">
-                                    <option value="1" translate="settings.contrasts.normal"></option>
-                                    <option value="2" translate="settings.contrasts.high"></option>
-                                </select>
+                            <div class="accordion-body">
+                                <i></i>
+                                <div class="settings-title">
+                                    <span class="main-title" translate="settings.contrast"></span>
+                                </div>
+                                <div class="settings-option">
+                                    <select class="form-select" id="color-mode-select" (change)="contrastChange()"
+                                        [(ngModel)]="highContrast" aria-label="Color mode">
+                                        <option value="1" translate="settings.contrasts.normal"></option>
+                                        <option value="2" translate="settings.contrasts.high"></option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-settings">
-                <i class="fa fa-text-height"></i>
-                <div class="settings-title">
-                    <span class="main-title" translate="settings.fontsize"></span>
-                    <span class="description text-muted" translate="settings.fontsize-d"></span>
-                </div>
-                <div class="settings-option">
-                    <input type="range" class="form-range" min="-5" max="5" step="1" id="font-size-range"
-                        (change)="fontSizeChange()" [(ngModel)]="fontSize" />
-                    <span class="font-size-display">{{((this.fontSize / 20 + 1) * 100).toFixed(0)}}%</span>
+                <div class="card-settings">
+                    <i class="fa fa-text-height"></i>
+                    <div class="settings-title">
+                        <span class="main-title" translate="settings.fontsize"></span>
+                        <span class="description text-muted" translate="settings.fontsize-d"></span>
+                    </div>
+                    <div class="settings-option">
+                        <input type="range" class="form-range" min="-5" max="5" step="1" id="font-size-range"
+                            (change)="fontSizeChange()" [(ngModel)]="fontSize" />
+                        <span class="font-size-display">{{((this.fontSize / 20 + 1) * 100).toFixed(0)}}%</span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -22,18 +22,20 @@ export class MediaService {
       name: '騙されないからね。',
       author: 'りりあ。',
       album: '軌跡',
-      keywords: ['りりあ。', '騙されないからね。', 'Riria.'],
+      keywords: ['Riria.'],
       type: 'music',
       cover: './cover/cover_riria_kiseki.jpg',
+      file: './music/riria/kiseki/04.mp3',
       year: 2024
     },
     {
       name: '失恋ソング沢山聴いて 泣いてばかりの私はもう。',
       author: 'りりあ。',
       album: '失恋ソング沢山聴いて 泣いてばかりの私はもう。',
-      keywords: ['りりあ。', '失恋ソング沢山聴いて 泣いてばかりの私はもう。', 'Riria.'],
+      keywords: ['Riria.'],
       type: 'music',
-      cover: './cover/cover_riria_kiseki.jpg',
+      cover: './cover/cover_riria.jpg',
+      file: './music/riria/summer-time-rendering/01.mp3',
       year: 2022
     }
   ]
@@ -52,7 +54,7 @@ export class MediaService {
     return new Fuse(mediaList, {
       threshold: 0.5,
       keys: ['name', 'author', 'album', 'keywords']
-    }).search(keyword);
+    }).search(keyword).map(item => item.item);
   }
 }
 

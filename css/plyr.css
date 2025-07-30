@@ -43,6 +43,7 @@
 .plyr {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    border-radius: 5rem;
     align-items: center;
     direction: ltr;
     display: flex;
@@ -310,6 +311,7 @@ a.plyr__control:before {
     color: var(--plyr-menu-color, #4a5464);
     font-size: 15px;
     font-size: var(--plyr-font-size-base, 15px);
+    border: var(--bs-border-width) solid var(--bs-border-color-translucent);
     margin-bottom: 10px;
     position: absolute;
     right: -3px;

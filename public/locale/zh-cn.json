@@ -28,5 +28,9 @@
         "license": "许可证",
         "language": "显示语言",
         "language-d": "默认显示语言为英语。"
+    },
+    "music": {
+        "search": "搜索...",
+        "noresult": "无结果"
     }
 }

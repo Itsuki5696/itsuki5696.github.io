@@ -1,4 +1,4 @@
-.card-settings {
+::ng-deep .card-settings {
     border: var(--bs-border-width) solid var(--bs-border-color-translucent);
     border-radius: var(--bs-border-radius);
     background-color: rgba(var(--bs-body-color-rgb), .05);
@@ -8,27 +8,22 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: .5rem;
 }
 
-.accordion-settings {
-    margin-bottom: .5rem;
-}
-
-.accordion-settings .accordion-item {
+::ng-deep .accordion-settings .accordion-item {
     --bs-accordion-border-color: var(--bs-border-color-translucent);
 }
 
-.accordion-settings .accordion-body:not(:first-of-type) {
+::ng-deep .accordion-settings .accordion-body:not(:first-of-type) {
     border-top: var(--bs-border-width) solid var(--bs-border-color-translucent);
 }
 
-.accordion-settings .accordion-body:last-of-type {
+::ng-deep .accordion-settings .accordion-body:last-of-type {
     border-bottom-left-radius: calc(var(--bs-border-radius) - var(--bs-border-width));
     border-bottom-right-radius: calc(var(--bs-border-radius) - var(--bs-border-width));
 }
 
-.accordion-settings .accordion-button {
+::ng-deep .accordion-settings .accordion-button {
     padding: .75rem 1rem;
     display: flex;
     width: 100%;
@@ -36,7 +31,7 @@
     align-items: center;
 }
 
-.accordion-settings .accordion-body {
+::ng-deep .accordion-settings .accordion-body {
     padding: .75rem 1rem;
     display: flex;
     width: 100%;
@@ -45,52 +40,54 @@
     background-color: rgba(var(--bs-body-color-rgb), .05);
 }
 
-.accordion-settings .accordion-button.collapsed {
+::ng-deep .accordion-settings .accordion-button.collapsed {
     background-color: rgba(var(--bs-body-color-rgb), .05);
 }
 
-.card-settings > .settings-title,.accordion-settings .settings-title {
+::ng-deep .card-settings > .settings-title,::ng-deep .accordion-settings .settings-title {
     display: flex;
     flex-wrap: wrap;
     flex: 1 !important;
 }
 
-.card-settings > .settings-title > .main-title,.accordion-settings .settings-title > .main-title {
+::ng-deep .card-settings > .settings-title > .main-title,::ng-deep .accordion-settings .settings-title > .main-title {
     font-weight: normal !important;
     font-size: 1rem;
     line-height: var(--bs-body-line-height);
     width: 100%;
 }
 
-.card-settings > .settings-title > .description,.accordion-settings .settings-title > .description {
+::ng-deep .card-settings > .settings-title > .description,::ng-deep .accordion-settings .settings-title > .description {
     font-weight: normal !important;
     font-size: .75rem;
     width: 100%;
     line-height: var(--bs-body-line-height);
 }
 
-.card-settings > .settings-option,.accordion-settings .settings-option {
+::ng-deep .card-settings > .settings-option,::ng-deep .accordion-settings .settings-option {
     display: flex;
     justify-content: right;
     align-items: center;
     column-gap: .5rem;
 }
 
-.font-size-display {
+::ng-deep .font-size-display {
+    text-align: right;
     font-size: 1rem !important;
+    width: 4rem !important;
 }
 
-.card-settings > .settings-title *,.accordion-settings .settings-title * {
+::ng-deep .card-settings > .settings-title *,::ng-deep .accordion-settings .settings-title * {
     margin-bottom: 0px !important;
 }
 
-.card-settings i, .card-settings svg,.accordion-settings i, .accordion-settings svg {
+::ng-deep .card-settings i, .card-settings svg,::ng-deep .accordion-settings i, .accordion-settings svg {
     margin-right: .75rem;
     width: 1rem;
     height: 1rem;
 }
 
-.btn-macclose {
+::ng-deep .btn-macclose {
     --bs-btn-color: #fff;
     --bs-btn-bg: #dc3545;
     --bs-btn-border-color: #dc3545;
@@ -114,10 +111,75 @@
     cursor: pointer;
 }
 
-.btn-macclose:hover {
+::ng-deep .btn-macclose:hover {
     background-color: var(--bs-btn-hover-bg);
 }
 
-.btn-macclose:focus, .btn-macclose:active {
+::ng-deep .btn-macclose:focus, .btn-macclose:active {
     background-color: var(--bs-btn-active-bg);
+}
+
+.toast.bg-blurred {
+    background-color: var(--bs-body-bg);
+    border-radius: var(--bs-border-radius-xl);
+    z-index: 999
+}
+
+.toast.full-screen {
+    min-width: 90%;
+    max-width: 700px;
+    max-height: 90%;
+    overflow-y: scroll;
+}
+
+@media (min-width: 576px) {
+    .toast.full-screen {
+        min-width: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    .toast.full-screen {
+        min-width: 70%;
+    }
+}
+
+@media (min-width: 992px) {
+    .toast.full-screen {
+        min-width: 60%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .toast.full-screen {
+        min-width: 50%;
+    }
+}
+
+.toast.bg-blurred .toast-header {
+    background-color: var(--bs-body-bg);
+}
+
+.shadow {
+    background-color: rgba(var(--bs-body-bg-rgb), .1);
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+    z-index: 1;
+    transition: .1s ease-in-out;
+}
+
+.settings-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .5rem
+}
+
+.settings-list > * {
+    width: 100%;
+    margin: 0;
+}
+
+.settings-list > h5:not(:first-of-type) {
+    margin: .5rem 0 0 0;
 }
