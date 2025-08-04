@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row g-2">
-        <h2 translate="navbar.music"></h2>
+        <h2 class="d-flex flex-row align-items-center gap-4 back"><a [routerLink]="['/music']">{{'navbar.music' | translate}}</a><i class="fa fa-chevron-right"></i>{{artist()}}</h2>
         <div class="col-12">
             <div class="d-flex justify-content-center search-box pb-4">
                 <input class="form-control" [placeholder]="'music.search' | translate" type="search" (input)="onSearchChanged($event)" />

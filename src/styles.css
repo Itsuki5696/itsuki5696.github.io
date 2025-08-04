@@ -310,3 +310,21 @@ ul.nav-list>li.nav-item:active,
 .app-body .container {
     min-height: 100%;
 }
+
+
+.card-music {
+    background-color: rgba(var(--bs-body-color-rgb), .1);
+    transition: .15s ease-in-out;
+}
+
+.card-music > img {
+    aspect-ratio: 1;
+}
+
+.card-music:hover {
+    background-color: rgba(var(--bs-body-color-rgb), .15);
+}
+
+.card-music:active {
+    background-color: rgba(var(--bs-body-color-rgb), .2);
+}

@@ -12,6 +12,7 @@ export interface Media {
   file?: string;
   cover?: string;
   year?: number;
+  description?: string;
 }
 
 @Injectable({
@@ -20,6 +21,7 @@ export interface Media {
 export class MediaService {
   private audioSrcSubject = new BehaviorSubject<string>('');
   audioSrc$ = this.audioSrcSubject.asObservable();
+  audioQueue: Queue<string>;
 
   setAudioSrc(src: string) {
     this.audioSrcSubject.next(src);
@@ -45,11 +47,22 @@ export class MediaService {
       type: 'music',
       cover: './cover/cover_riria.jpg',
       file: './music/riria/summer-time-rendering/01.mp3',
-      year: 2022
+      year: 2022,
+      description: 'TVアニメ「サマータイムレンダ」エンディングテーマ'
+    },
+    {
+      name: 'Motasoa',
+      author: 'Eida Al-Menhali',
+      album: 'Motasoa',
+      keywords: ['Motasoa', 'Eldha Al-Menhali'],
+      type: 'music',
+      year: 2017
     }
   ]
 
-  constructor() { }
+  constructor() {
+    this.audioQueue = new Queue<string>;
+  }
 
   groupMediaByAlbum(mediaList: Media[], album: string): Media[] {
     return mediaList.filter(item => item.album === album);
@@ -79,5 +92,23 @@ export class GroupByAlbum implements PipeTransform {
 
     // 把 { album: Media[] } 转成 [{ album, items }]
     return Object.entries(map).map(([album, items]) => ({ album, author: items[0].author, cover: items[0].cover, items }));
+  }
+}
+
+export class Queue<T> {
+  private items: T[];
+  constructor() {
+    this.items = [];
+  }
+  enqueue(item: T) {
+    this.items.push(item);
+  }
+
+  dequeue() {
+    return this.items.shift();
+  }
+
+  isEmpty() {
+    return this.items.length == 0;
   }
 }

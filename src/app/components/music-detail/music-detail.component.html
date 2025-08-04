@@ -1,29 +1,46 @@
 <div class="container">
     <div class="row g-2">
+        <h2><a class="back" [routerLink]="['/music']"><i class="fa fa-chevron-left"></i>{{'navbar.music' |
+                translate}}</a></h2>
         <div class="col-12">
-            <div class="d-flex justify-content-left align-items-center gap-4">
-                <img class="img-fluid img-cover" [src]="musicList[0].cover" />
-                <div class="row">
-                    <h3>{{musicList[0].album}}</h3>
-                    <p><a href="" class="text-decoration-none">{{musicList[0].author}}</a></p>
-                    <small class="text-muted">{{musicList[0].year}}</small>
+            <div class="row">
+                <div class="col-xxl-2 col-xl-3 col-4">
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid img-cover" [src]="musicList[0].cover" />
+                    </div>
+                </div>
+                <div class="col-xxl-10 col-xl-9 col-8">
+                    <div class="d-flex h-100 align-items-center justify-content-start">
+                        <div class="row">
+                            <h3>{{musicList[0].album}}</h3>
+                            <p><a [routerLink]="['/music/artist', musicList[0].author]" class="text-decoration-none">{{musicList[0].author}}</a></p>
+                            <small class="text-muted">{{musicList[0].year}}</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-12">
             <ul class="list-group">
                 @for (item of musicList; track item; let i = $index) {
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center w-100">
-                            <div class="d-flex justify-content-left align-items-center gap-4">
-                                <button class="btn btn-sm btn-link" (click)="playAudio(item.file!)">
-                                    <i class="fad fa-play"></i>
-                                </button>
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <div class="d-flex justify-content-start align-items-center gap-4">
+                            <button class="btn btn-sm btn-link" (click)="playAudio(item.file!)">
+                                <i class="fad fa-play"></i>
+                            </button>
+                            <div class="row">
                                 <h6 class="mb-0">{{item.id ?? i + 1}}. {{item.name}}</h6>
+                                <small class="text-muted">{{item.description}}</small>
                             </div>
-                            <span></span>
                         </div>
-                    </li>
+                        <div class="d-flex">
+                            <button class="btn btn-sm btn-link">
+                                <i class="fad fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </li>
                 }
             </ul>
         </div>
