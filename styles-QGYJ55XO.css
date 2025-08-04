@@ -39713,10 +39713,14 @@ body,
   height: 100vh !important;
   overflow: hidden !important;
 }
+.app-container .d-lg-flex {
+  height: 100% !important;
+}
 .app-container .d-lg-flex nav.app-sidenav {
   background-color: var(--bs-tertiary-bg);
   height: 100% !important;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -39730,19 +39734,22 @@ body,
 .nav-title {
   padding-left: .75rem;
 }
-.app-container .d-md-block nav.app-sidenav {
+.app-container .d-block {
+  position: sticky;
+}
+.app-container .d-block nav.app-sidenav {
   background-color: var(--bs-tertiary-bg);
   width: 100% !important;
   border-top: var(--bs-border-width) solid var(--bs-border-color-translucent);
   bottom: 0;
+  height: auto;
   padding: .5rem;
-  position: fixed;
   overflow-x: auto;
   overflow-y: hidden;
 }
 .app-container .app-body {
-  height: 100% !important;
   padding-top: 2rem;
+  padding-bottom: 1rem;
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
   overflow-y: auto;
@@ -39824,22 +39831,22 @@ ul.nav-list > li.nav-item:active,
 .d-lg-flex ul.nav-list {
   gap: .5rem;
 }
-.d-md-block ul.nav-list {
+.d-block ul.nav-list {
   display: flex;
   flex-wrap: nowrap;
   gap: .5rem;
 }
-.d-md-block ul.nav-list > li.nav-item:last-of-type {
+.d-block ul.nav-list > li.nav-item:last-of-type {
   margin-right: .5rem;
 }
-.d-md-block li.nav-item {
+.d-block li.nav-item {
   flex-wrap: wrap;
   padding: 0 !important;
   flex-direction: column;
   min-width: 5rem;
   align-items: center;
 }
-.d-md-block li.nav-item > a.nav-link {
+.d-block li.nav-item > a.nav-link {
   align-items: center;
   display: flex;
   padding: .25rem .5rem;
@@ -39847,7 +39854,7 @@ ul.nav-list > li.nav-item:active,
   flex-wrap: wrap;
   flex-direction: column;
 }
-.d-md-block li.nav-item.active::after {
+.d-block li.nav-item.active::after {
   content: "";
   background: var(--bs-primary);
   transform: translate3d(-200%, 0, 0);
@@ -39858,7 +39865,7 @@ ul.nav-list > li.nav-item:active,
   transition: height 0.1s;
   transform: translate3d(0, 0, 0);
 }
-.d-md-block li.nav-item.active:active::after {
+.d-block li.nav-item.active:active::after {
   width: .75rem !important;
   transition: height 0.1s;
   transform: translate3d(0, 0, 0);
@@ -39871,6 +39878,9 @@ ul.nav-list > li.nav-item:active,
 }
 .search-box > input {
   max-width: 30rem;
+}
+.app-body .container {
+  min-height: 100%;
 }
 
 /* css/plyr.css */

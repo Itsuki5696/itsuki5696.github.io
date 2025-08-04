@@ -68404,8 +68404,14 @@ Fuse.config = Config;
 
 // src/app/services/media.service.ts
 var MediaService = class _MediaService {
+  audioSrcSubject = new BehaviorSubject("");
+  audioSrc$ = this.audioSrcSubject.asObservable();
+  setAudioSrc(src) {
+    this.audioSrcSubject.next(src);
+  }
   musicList = [
     {
+      id: 4,
       name: "\u9A19\u3055\u308C\u306A\u3044\u304B\u3089\u306D\u3002",
       author: "\u308A\u308A\u3042\u3002",
       album: "\u8ECC\u8DE1",
@@ -68416,9 +68422,9 @@ var MediaService = class _MediaService {
       year: 2024
     },
     {
-      name: "\u5931\u604B\u30BD\u30F3\u30AF\u3099\u6CA2\u5C71\u8074\u3044\u3066 \u6CE3\u3044\u3066\u306F\u3099\u304B\u308A\u306E\u79C1\u306F\u3082\u3046\u3002",
+      name: "\u5931\u604B\u30BD\u30F3\u30AF\u3099\u6CA2\u5C71\u8074\u3044\u3066\u3000\u6CE3\u3044\u3066\u306F\u3099\u304B\u308A\u306E\u79C1\u306F\u3082\u3046\u3002",
       author: "\u308A\u308A\u3042\u3002",
-      album: "\u5931\u604B\u30BD\u30F3\u30AF\u3099\u6CA2\u5C71\u8074\u3044\u3066 \u6CE3\u3044\u3066\u306F\u3099\u304B\u308A\u306E\u79C1\u306F\u3082\u3046\u3002",
+      album: "\u5931\u604B\u30BD\u30F3\u30AF\u3099\u6CA2\u5C71\u8074\u3044\u3066\u3000\u6CE3\u3044\u3066\u306F\u3099\u304B\u308A\u306E\u79C1\u306F\u3082\u3046\u3002",
       keywords: ["Riria."],
       type: "music",
       cover: "./cover/cover_riria.jpg",
@@ -68649,25 +68655,26 @@ var AudioPlayerComponent = class _AudioPlayerComponent {
 function MusicDetailComponent_For_16_Template(rf, ctx) {
   if (rf & 1) {
     const _r1 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "li", 9)(1, "div", 12)(2, "div", 3)(3, "button", 13);
+    \u0275\u0275elementStart(0, "li", 9)(1, "div", 10)(2, "div", 3)(3, "button", 11);
     \u0275\u0275listener("click", function MusicDetailComponent_For_16_Template_button_click_3_listener() {
       const item_r2 = \u0275\u0275restoreView(_r1).$implicit;
       const ctx_r2 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r2.src = item_r2.file);
+      return \u0275\u0275resetView(ctx_r2.playAudio(item_r2.file));
     });
-    \u0275\u0275element(4, "i", 14);
+    \u0275\u0275element(4, "i", 12);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "h6", 15);
+    \u0275\u0275elementStart(5, "h6", 13);
     \u0275\u0275text(6);
     \u0275\u0275elementEnd()();
     \u0275\u0275element(7, "span");
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
+    let tmp_11_0;
     const item_r2 = ctx.$implicit;
     const \u0275$index_28_r4 = ctx.$index;
     \u0275\u0275advance(6);
-    \u0275\u0275textInterpolate2("", \u0275$index_28_r4 + 1, ". ", item_r2.name, "");
+    \u0275\u0275textInterpolate2("", (tmp_11_0 = item_r2.id) !== null && tmp_11_0 !== void 0 ? tmp_11_0 : \u0275$index_28_r4 + 1, ". ", item_r2.name, "");
   }
 }
 var MusicDetailComponent = class _MusicDetailComponent {
@@ -68682,10 +68689,13 @@ var MusicDetailComponent = class _MusicDetailComponent {
   ngOnInit() {
     console.log(this.musicList);
   }
+  playAudio(src) {
+    this.mediaSrv.setAudioSrc(src);
+  }
   static \u0275fac = function MusicDetailComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _MusicDetailComponent)();
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _MusicDetailComponent, selectors: [["app-music-detail"]], decls: 19, vars: 6, consts: [[1, "container"], [1, "row", "g-2"], [1, "col-12"], [1, "d-flex", "justify-content-left", "align-items-center", "gap-4"], [1, "img-fluid", "img-cover", 3, "src"], [1, "row"], ["href", "", 1, "text-decoration-none"], [1, "text-muted"], [1, "list-group"], [1, "list-group-item"], ["app-audio-player", ""], [3, "src", "play"], [1, "d-flex", "justify-content-between", "align-items-center", "w-100"], [1, "btn", "btn-sm", "btn-link", 3, "click"], [1, "fad", "fa-play"], [1, "mb-0"]], template: function MusicDetailComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _MusicDetailComponent, selectors: [["app-music-detail"]], decls: 17, vars: 4, consts: [[1, "container"], [1, "row", "g-2"], [1, "col-12"], [1, "d-flex", "justify-content-left", "align-items-center", "gap-4"], [1, "img-fluid", "img-cover", 3, "src"], [1, "row"], ["href", "", 1, "text-decoration-none"], [1, "text-muted"], [1, "list-group"], [1, "list-group-item"], [1, "d-flex", "justify-content-between", "align-items-center", "w-100"], [1, "btn", "btn-sm", "btn-link", 3, "click"], [1, "fad", "fa-play"], [1, "mb-0"]], template: function MusicDetailComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3);
       \u0275\u0275element(4, "img", 4);
@@ -68700,10 +68710,7 @@ var MusicDetailComponent = class _MusicDetailComponent {
       \u0275\u0275elementEnd()()()();
       \u0275\u0275elementStart(13, "div", 2)(14, "ul", 8);
       \u0275\u0275repeaterCreate(15, MusicDetailComponent_For_16_Template, 8, 2, "li", 9, \u0275\u0275repeaterTrackByIdentity);
-      \u0275\u0275elementEnd()()();
-      \u0275\u0275elementStart(17, "div", 10);
-      \u0275\u0275element(18, "app-audio-player", 11);
-      \u0275\u0275elementEnd()();
+      \u0275\u0275elementEnd()()()();
     }
     if (rf & 2) {
       \u0275\u0275advance(4);
@@ -68716,15 +68723,13 @@ var MusicDetailComponent = class _MusicDetailComponent {
       \u0275\u0275textInterpolate(ctx.musicList[0].year);
       \u0275\u0275advance(3);
       \u0275\u0275repeater(ctx.musicList);
-      \u0275\u0275advance(3);
-      \u0275\u0275property("src", ctx.src)("play", true);
     }
-  }, dependencies: [RouterModule, CommonModule, NgbModule, TranslateModule, AudioPlayerComponent], styles: ["\n\n.img-cover[_ngcontent-%COMP%] {\n  max-width: 15rem;\n  width: 100%;\n  border-radius: var(--bs-border-radius);\n  border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n}\n[app-audio-player][_ngcontent-%COMP%] {\n  position: sticky;\n  box-sizing: border-box;\n  bottom: 0rem;\n  border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n  border-radius: 5rem;\n  width: 100%;\n  margin-top: 1rem;\n}"] });
+  }, dependencies: [RouterModule, CommonModule, NgbModule, TranslateModule], styles: ["\n\n.img-cover[_ngcontent-%COMP%] {\n  max-width: 15rem;\n  width: 100%;\n  border-radius: var(--bs-border-radius);\n  border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n}\n[app-audio-player][_ngcontent-%COMP%] {\n  position: sticky;\n  box-sizing: border-box;\n  bottom: 0rem;\n  border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n  border-radius: 5rem;\n  width: 100%;\n  margin-top: 1rem;\n}"] });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(MusicDetailComponent, [{
     type: Component,
-    args: [{ selector: "app-music-detail", imports: [RouterOutlet, RouterModule, CommonModule, NgbModule, TranslateModule, TranslatePipe, TranslateDirective, AudioPlayerComponent], template: '<div class="container">\n    <div class="row g-2">\n        <div class="col-12">\n            <div class="d-flex justify-content-left align-items-center gap-4">\n                <img class="img-fluid img-cover" [src]="musicList[0].cover" />\n                <div class="row">\n                    <h3>{{musicList[0].album}}</h3>\n                    <p><a href="" class="text-decoration-none">{{musicList[0].author}}</a></p>\n                    <small class="text-muted">{{musicList[0].year}}</small>\n                </div>\n            </div>\n        </div>\n        <div class="col-12">\n            <ul class="list-group">\n                @for (item of musicList; track item; let i = $index) {\n                    <li class="list-group-item">\n                        <div class="d-flex justify-content-between align-items-center w-100">\n                            <div class="d-flex justify-content-left align-items-center gap-4">\n                                <button class="btn btn-sm btn-link" (click)="src = item.file!">\n                                    <i class="fad fa-play"></i>\n                                </button>\n                                <h6 class="mb-0">{{i + 1}}. {{item.name}}</h6>\n                            </div>\n                            <span></span>\n                        </div>\n                    </li>\n                }\n            </ul>\n        </div>\n    </div>\n    <div app-audio-player>\n        <app-audio-player [src]="src" [play]="true"></app-audio-player>\n    </div>\n</div>', styles: ["/* src/app/components/music-detail/music-detail.component.css */\n.img-cover {\n  max-width: 15rem;\n  width: 100%;\n  border-radius: var(--bs-border-radius);\n  border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n}\n[app-audio-player] {\n  position: sticky;\n  box-sizing: border-box;\n  bottom: 0rem;\n  border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n  border-radius: 5rem;\n  width: 100%;\n  margin-top: 1rem;\n}\n"] }]
+    args: [{ selector: "app-music-detail", imports: [RouterOutlet, RouterModule, CommonModule, NgbModule, TranslateModule, TranslatePipe, TranslateDirective, AudioPlayerComponent], template: '<div class="container">\n    <div class="row g-2">\n        <div class="col-12">\n            <div class="d-flex justify-content-left align-items-center gap-4">\n                <img class="img-fluid img-cover" [src]="musicList[0].cover" />\n                <div class="row">\n                    <h3>{{musicList[0].album}}</h3>\n                    <p><a href="" class="text-decoration-none">{{musicList[0].author}}</a></p>\n                    <small class="text-muted">{{musicList[0].year}}</small>\n                </div>\n            </div>\n        </div>\n        <div class="col-12">\n            <ul class="list-group">\n                @for (item of musicList; track item; let i = $index) {\n                    <li class="list-group-item">\n                        <div class="d-flex justify-content-between align-items-center w-100">\n                            <div class="d-flex justify-content-left align-items-center gap-4">\n                                <button class="btn btn-sm btn-link" (click)="playAudio(item.file!)">\n                                    <i class="fad fa-play"></i>\n                                </button>\n                                <h6 class="mb-0">{{item.id ?? i + 1}}. {{item.name}}</h6>\n                            </div>\n                            <span></span>\n                        </div>\n                    </li>\n                }\n            </ul>\n        </div>\n    </div>\n</div>', styles: ["/* src/app/components/music-detail/music-detail.component.css */\n.img-cover {\n  max-width: 15rem;\n  width: 100%;\n  border-radius: var(--bs-border-radius);\n  border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n}\n[app-audio-player] {\n  position: sticky;\n  box-sizing: border-box;\n  bottom: 0rem;\n  border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n  border-radius: 5rem;\n  width: 100%;\n  margin-top: 1rem;\n}\n"] }]
   }], null, null);
 })();
 (() => {
@@ -68736,50 +68741,58 @@ var LightnovelComponent = class _LightnovelComponent {
   static \u0275fac = function LightnovelComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _LightnovelComponent)();
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LightnovelComponent, selectors: [["app-lightnovel"]], decls: 2, vars: 0, template: function LightnovelComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LightnovelComponent, selectors: [["app-lightnovel"]], decls: 3, vars: 0, consts: [[1, "container"], [1, "row"], ["translate", "navbar.lightnovel"]], template: function LightnovelComponent_Template(rf, ctx) {
     if (rf & 1) {
-      \u0275\u0275elementStart(0, "p");
-      \u0275\u0275text(1, "lightnovel works!");
-      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(0, "div", 0)(1, "div", 1);
+      \u0275\u0275element(2, "h2", 2);
+      \u0275\u0275elementEnd()();
     }
-  }, encapsulation: 2 });
+  }, dependencies: [RouterModule, CommonModule, NgbModule, TranslateModule, TranslateDirective], encapsulation: 2 });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(LightnovelComponent, [{
     type: Component,
-    args: [{ selector: "app-lightnovel", imports: [], template: "<p>lightnovel works!</p>\n" }]
+    args: [{ selector: "app-lightnovel", imports: [RouterOutlet, RouterModule, CommonModule, NgbModule, TranslateModule, TranslatePipe, TranslateDirective, AudioPlayerComponent], template: '<div class="container">\n    <div class="row">\n        <h2 translate="navbar.lightnovel"></h2>\n    </div>\n</div>' }]
   }], null, null);
 })();
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LightnovelComponent, { className: "LightnovelComponent", filePath: "src/app/components/lightnovel/lightnovel.component.ts", lineNumber: 9 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LightnovelComponent, { className: "LightnovelComponent", filePath: "src/app/components/lightnovel/lightnovel.component.ts", lineNumber: 14 });
 })();
 
 // src/app/app.component.ts
 var _c03 = () => ["/settings"];
 var _forTrack0 = ($index, $item) => $item.id;
+function AppComponent_For_8_Conditional_0_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275element(0, "hr");
+  }
+}
 function AppComponent_For_8_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "li", 15)(1, "a", 9);
-    \u0275\u0275element(2, "i", 16);
-    \u0275\u0275text(3);
-    \u0275\u0275pipe(4, "translate");
+    \u0275\u0275template(0, AppComponent_For_8_Conditional_0_Template, 1, 0, "hr");
+    \u0275\u0275elementStart(1, "li", 16)(2, "a", 8);
+    \u0275\u0275element(3, "i", 17);
+    \u0275\u0275text(4);
+    \u0275\u0275pipe(5, "translate");
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
     const item_r1 = ctx.$implicit;
     const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275conditional(item_r1.prevHr ? 0 : -1);
+    \u0275\u0275advance();
     \u0275\u0275classProp("active", ctx_r1.IsPageActive(item_r1.router[0]));
     \u0275\u0275property("routerLink", item_r1.router);
     \u0275\u0275advance(2);
     \u0275\u0275property("ngClass", item_r1.symbol);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(4, 5, item_r1.text), "");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(5, 6, item_r1.text), "");
   }
 }
-function AppComponent_For_21_Template(rf, ctx) {
+function AppComponent_For_24_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "li", 14)(1, "a", 9);
-    \u0275\u0275element(2, "i", 16);
+    \u0275\u0275elementStart(0, "li", 15)(1, "a", 8);
+    \u0275\u0275element(2, "i", 17);
     \u0275\u0275text(3);
     \u0275\u0275pipe(4, "translate");
     \u0275\u0275elementEnd()();
@@ -68796,9 +68809,10 @@ function AppComponent_For_21_Template(rf, ctx) {
   }
 }
 var AppComponent = class _AppComponent {
-  constructor(router, translate) {
+  constructor(router, translate, mediaService) {
     this.router = router;
     this.translate = translate;
+    this.mediaService = mediaService;
     this.tabs = [
       {
         id: 0,
@@ -68823,14 +68837,24 @@ var AppComponent = class _AppComponent {
         text: "navbar.lightnovel",
         symbol: "fa-books",
         router: ["/lightnovel"]
+      },
+      {
+        id: 4,
+        prevHr: true,
+        text: "navbar.funds",
+        symbol: "fa-money-bill-transfer",
+        router: ["/funds"]
       }
     ];
     this.translate.addLangs(["zh-cn", "ja-jp", "en-us"]);
     this.translate.setDefaultLang("zh-cn");
     this.translate.use("zh-cn");
+    this.mediaService.audioSrc$.subscribe((src) => this.audioSrc = src);
   }
   title = "aninextweb";
   tabs = [];
+  audioSrc = "";
+  videoSrc = "";
   static Version = "0.2507.1.0";
   static CompileDate = "20250728";
   static Branch = "dev";
@@ -68859,55 +68883,59 @@ var AppComponent = class _AppComponent {
       document.documentElement.setAttribute("data-bs-theme", "light");
   }
   static \u0275fac = function AppComponent_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _AppComponent)(\u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(TranslateService));
+    return new (__ngFactoryType__ || _AppComponent)(\u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(TranslateService), \u0275\u0275directiveInject(MediaService));
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AppComponent, selectors: [["app-root"]], decls: 27, vars: 14, consts: [[1, "app-container"], [1, "row", "g-0"], [1, "col-xxl-2", "col-xl-3", "col-lg-4", "col-md-12", "d-none", "d-lg-flex"], [1, "app-sidenav"], [1, "text-center"], [1, "nav-list", "row"], [1, "nav-item", 3, "routerLink", "active"], [2, "flex", "1"], [1, "nav-bottom-item", 3, "routerLink"], [1, "nav-link"], [1, "fad", "fa-gear"], [1, "col-xxl-10", "col-xl-9", "col-lg-8", "col-md-12", "app-body"], [1, "d-md-block", "d-lg-none", "row", "g-0"], [1, "col", "nav-item", 3, "routerLink", "active"], [1, "col", "nav-item", 3, "routerLink"], [1, "nav-item", 3, "routerLink"], [1, "fad", 3, "ngClass"]], template: function AppComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AppComponent, selectors: [["app-root"]], decls: 30, vars: 16, consts: [[1, "app-container"], [1, "row", "g-0"], [1, "col-xxl-2", "col-xl-3", "col-lg-4", "col-md-12", "d-none", "d-lg-flex"], [1, "app-sidenav"], [1, "text-center"], [1, "nav-list", "row"], [2, "flex", "1"], [1, "nav-bottom-item", 3, "routerLink"], [1, "nav-link"], [1, "fad", "fa-gear"], [1, "col-xxl-10", "col-xl-9", "col-lg-8", "col-md-12", "app-body"], ["app-audio-player", ""], [3, "src", "play"], [1, "col-md-12", "d-block", "d-lg-none"], [1, "col", "nav-item", 3, "routerLink", "active"], [1, "col", "nav-item", 3, "routerLink"], [1, "nav-item", 3, "routerLink"], [1, "fad", 3, "ngClass"]], template: function AppComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "nav", 3)(4, "h3", 4);
       \u0275\u0275text(5, "Itsuki5696");
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(6, "ul", 5);
-      \u0275\u0275repeaterCreate(7, AppComponent_For_8_Template, 5, 7, "li", 6, _forTrack0);
+      \u0275\u0275repeaterCreate(7, AppComponent_For_8_Template, 6, 8, null, null, _forTrack0);
       \u0275\u0275elementEnd();
-      \u0275\u0275element(9, "div", 7);
-      \u0275\u0275elementStart(10, "div", 8)(11, "a", 9);
-      \u0275\u0275element(12, "i", 10);
-      \u0275\u0275text(13);
-      \u0275\u0275pipe(14, "translate");
+      \u0275\u0275element(9, "div", 6)(10, "hr");
+      \u0275\u0275elementStart(11, "div", 7)(12, "a", 8);
+      \u0275\u0275element(13, "i", 9);
+      \u0275\u0275text(14);
+      \u0275\u0275pipe(15, "translate");
       \u0275\u0275elementEnd()()()();
-      \u0275\u0275elementStart(15, "div", 11);
-      \u0275\u0275element(16, "router-outlet");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(17, "div", 12)(18, "nav", 3)(19, "ul", 5);
-      \u0275\u0275repeaterCreate(20, AppComponent_For_21_Template, 5, 7, "li", 13, _forTrack0);
-      \u0275\u0275elementStart(22, "li", 14)(23, "a", 9);
-      \u0275\u0275element(24, "i", 10);
-      \u0275\u0275text(25);
-      \u0275\u0275pipe(26, "translate");
+      \u0275\u0275elementStart(16, "div", 10);
+      \u0275\u0275element(17, "router-outlet");
+      \u0275\u0275elementStart(18, "div", 11);
+      \u0275\u0275element(19, "app-audio-player", 12);
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(20, "div", 13)(21, "nav", 3)(22, "ul", 5);
+      \u0275\u0275repeaterCreate(23, AppComponent_For_24_Template, 5, 7, "li", 14, _forTrack0);
+      \u0275\u0275elementStart(25, "li", 15)(26, "a", 8);
+      \u0275\u0275element(27, "i", 9);
+      \u0275\u0275text(28);
+      \u0275\u0275pipe(29, "translate");
       \u0275\u0275elementEnd()()()()()()();
     }
     if (rf & 2) {
       \u0275\u0275advance(7);
       \u0275\u0275repeater(ctx.tabs);
-      \u0275\u0275advance(3);
+      \u0275\u0275advance(4);
       \u0275\u0275classProp("active", ctx.IsPageActive("/settings"));
-      \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(12, _c03));
+      \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(14, _c03));
       \u0275\u0275advance(3);
-      \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(14, 8, "navbar.settings"), "");
-      \u0275\u0275advance(7);
+      \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(15, 10, "navbar.settings"), "");
+      \u0275\u0275advance(5);
+      \u0275\u0275property("src", ctx.audioSrc)("play", true);
+      \u0275\u0275advance(4);
       \u0275\u0275repeater(ctx.tabs);
       \u0275\u0275advance(2);
       \u0275\u0275classProp("active", ctx.IsPageActive("/settings"));
-      \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(13, _c03));
+      \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(15, _c03));
       \u0275\u0275advance(3);
-      \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(26, 10, "navbar.settings"), "");
+      \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(29, 12, "navbar.settings"), "");
     }
-  }, dependencies: [RouterOutlet, RouterModule, RouterLink, CommonModule, NgClass, NgbModule, TranslateModule, TranslatePipe], styles: ["\n\n.nav-link[_ngcontent-%COMP%] {\n  gap: .5rem;\n}\n.nav-link[_ngcontent-%COMP%]    > svg[_ngcontent-%COMP%], \n.nav-link[_ngcontent-%COMP%]    > i[_ngcontent-%COMP%] {\n  width: 1rem;\n  height: 1rem;\n}"] });
+  }, dependencies: [RouterOutlet, RouterModule, RouterLink, CommonModule, NgClass, NgbModule, TranslateModule, TranslatePipe, AudioPlayerComponent], styles: ["\n\n.nav-link[_ngcontent-%COMP%] {\n  gap: .5rem;\n}\n.nav-link[_ngcontent-%COMP%]    > svg[_ngcontent-%COMP%], \n.nav-link[_ngcontent-%COMP%]    > i[_ngcontent-%COMP%] {\n  width: 1rem;\n  height: 1rem;\n}\n[app-audio-player][_ngcontent-%COMP%] {\n  position: sticky;\n  box-sizing: border-box;\n  bottom: 0rem;\n  border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n  border-radius: 5rem;\n  width: 100%;\n  margin-top: 1rem;\n}\n.d-block[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: end;\n}\n@media (max-width: 992px) {\n  .app-container[_ngcontent-%COMP%]    > .row[_ngcontent-%COMP%] {\n    flex-direction: column;\n  }\n  .app-body[_ngcontent-%COMP%] {\n    flex: 1;\n    flex-grow: 1;\n  }\n  [app-audio-player][_ngcontent-%COMP%] {\n    padding-left: 1rem;\n    padding-right: 1rem;\n    border: none;\n  }\n  [app-audio-player][_ngcontent-%COMP%]   .plyr[_ngcontent-%COMP%] {\n    border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n    border-radius: 5rem;\n  }\n}"] });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AppComponent, [{
     type: Component,
-    args: [{ selector: "app-root", imports: [RouterOutlet, RouterModule, CommonModule, NgbModule, TranslateModule, TranslatePipe, TranslateDirective], template: `<div class="app-container">
+    args: [{ selector: "app-root", imports: [RouterOutlet, RouterModule, CommonModule, NgbModule, TranslateModule, TranslatePipe, TranslateDirective, AudioPlayerComponent], template: `<div class="app-container">
     <div class="row g-0">
         <div class="col-xxl-2 col-xl-3 col-lg-4 col-md-12 d-none d-lg-flex">
             <nav class="app-sidenav">
@@ -68915,12 +68943,16 @@ var AppComponent = class _AppComponent {
 
                 <ul class="nav-list row">
                     @for (item of tabs; track item.id) {
+                    @if (item.prevHr) {
+                    <hr />
+                    }
                     <li class="nav-item" [routerLink]="item.router" [class.active]="IsPageActive(item.router[0])">
                         <a class="nav-link"><i class="fad" [ngClass]="item.symbol"></i> {{item.text | translate}}</a>
                     </li>
                     }
                 </ul>
                 <div style="flex: 1"></div>
+                <hr />
                 <div class="nav-bottom-item" [routerLink]="['/settings']" [class.active]="IsPageActive('/settings')">
                     <a class="nav-link"><i class="fad fa-gear"></i> {{'navbar.settings' | translate}}</a>
                 </div>
@@ -68929,13 +68961,15 @@ var AppComponent = class _AppComponent {
 
         <div class="col-xxl-10 col-xl-9 col-lg-8 col-md-12 app-body">
             <router-outlet></router-outlet>
+            <div app-audio-player>
+                <app-audio-player [src]="audioSrc" [play]="true"></app-audio-player>
+            </div>
         </div>
-        <div class="d-md-block d-lg-none row g-0">
+        <div class="col-md-12 d-block d-lg-none">
             <nav class="app-sidenav">
                 <ul class="nav-list row">
                     @for (item of tabs; track item.id) {
-                    <li class="col nav-item" [routerLink]="item.router"
-                        [class.active]="IsPageActive(item.router[0])">
+                    <li class="col nav-item" [routerLink]="item.router" [class.active]="IsPageActive(item.router[0])">
                         <a class="nav-link"><i class="fad" [ngClass]="item.symbol"></i> {{item.text | translate}}</a>
                     </li>
                     }
@@ -68946,11 +68980,11 @@ var AppComponent = class _AppComponent {
             </nav>
         </div>
     </div>
-</div>`, styles: ["/* src/app/app.component.css */\n.nav-link {\n  gap: .5rem;\n}\n.nav-link > svg,\n.nav-link > i {\n  width: 1rem;\n  height: 1rem;\n}\n"] }]
-  }], () => [{ type: Router }, { type: TranslateService }], null);
+</div>`, styles: ["/* src/app/app.component.css */\n.nav-link {\n  gap: .5rem;\n}\n.nav-link > svg,\n.nav-link > i {\n  width: 1rem;\n  height: 1rem;\n}\n[app-audio-player] {\n  position: sticky;\n  box-sizing: border-box;\n  bottom: 0rem;\n  border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n  border-radius: 5rem;\n  width: 100%;\n  margin-top: 1rem;\n}\n.d-block {\n  display: flex;\n  align-items: end;\n}\n@media (max-width: 992px) {\n  .app-container > .row {\n    flex-direction: column;\n  }\n  .app-body {\n    flex: 1;\n    flex-grow: 1;\n  }\n  [app-audio-player] {\n    padding-left: 1rem;\n    padding-right: 1rem;\n    border: none;\n  }\n  [app-audio-player] .plyr {\n    border: var(--bs-border-width) solid var(--bs-border-color-translucent);\n    border-radius: 5rem;\n  }\n}\n"] }]
+  }], () => [{ type: Router }, { type: TranslateService }, { type: MediaService }], null);
 })();
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AppComponent, { className: "AppComponent", filePath: "src/app/app.component.ts", lineNumber: 23 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AppComponent, { className: "AppComponent", filePath: "src/app/app.component.ts", lineNumber: 25 });
 })();
 
 // src/app/components/settings/settings.component.ts
