@@ -1,7 +1,9 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import Fuse from 'fuse.js';
+import { BehaviorSubject } from 'rxjs';
 
 export interface Media {
+  id?: number;
   name: string;
   author: string;
   album?: string;
@@ -16,9 +18,16 @@ export interface Media {
   providedIn: 'root'
 })
 export class MediaService {
+  private audioSrcSubject = new BehaviorSubject<string>('');
+  audioSrc$ = this.audioSrcSubject.asObservable();
+
+  setAudioSrc(src: string) {
+    this.audioSrcSubject.next(src);
+  }
 
   musicList: Media[] = [
     {
+      id: 4,
       name: '騙されないからね。',
       author: 'りりあ。',
       album: '軌跡',
@@ -29,9 +38,9 @@ export class MediaService {
       year: 2024
     },
     {
-      name: '失恋ソング沢山聴いて 泣いてばかりの私はもう。',
+      name: '失恋ソング沢山聴いて　泣いてばかりの私はもう。',
       author: 'りりあ。',
-      album: '失恋ソング沢山聴いて 泣いてばかりの私はもう。',
+      album: '失恋ソング沢山聴いて　泣いてばかりの私はもう。',
       keywords: ['Riria.'],
       type: 'music',
       cover: './cover/cover_riria.jpg',

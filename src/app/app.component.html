@@ -6,12 +6,16 @@
 
                 <ul class="nav-list row">
                     @for (item of tabs; track item.id) {
+                    @if (item.prevHr) {
+                    <hr />
+                    }
                     <li class="nav-item" [routerLink]="item.router" [class.active]="IsPageActive(item.router[0])">
                         <a class="nav-link"><i class="fad" [ngClass]="item.symbol"></i> {{item.text | translate}}</a>
                     </li>
                     }
                 </ul>
                 <div style="flex: 1"></div>
+                <hr />
                 <div class="nav-bottom-item" [routerLink]="['/settings']" [class.active]="IsPageActive('/settings')">
                     <a class="nav-link"><i class="fad fa-gear"></i> {{'navbar.settings' | translate}}</a>
                 </div>
@@ -20,13 +24,15 @@
 
         <div class="col-xxl-10 col-xl-9 col-lg-8 col-md-12 app-body">
             <router-outlet></router-outlet>
+            <div app-audio-player>
+                <app-audio-player [src]="audioSrc" [play]="true"></app-audio-player>
+            </div>
         </div>
-        <div class="d-md-block d-lg-none row g-0">
+        <div class="col-md-12 d-block d-lg-none">
             <nav class="app-sidenav">
                 <ul class="nav-list row">
                     @for (item of tabs; track item.id) {
-                    <li class="col nav-item" [routerLink]="item.router"
-                        [class.active]="IsPageActive(item.router[0])">
+                    <li class="col nav-item" [routerLink]="item.router" [class.active]="IsPageActive(item.router[0])">
                         <a class="nav-link"><i class="fad" [ngClass]="item.symbol"></i> {{item.text | translate}}</a>
                     </li>
                     }

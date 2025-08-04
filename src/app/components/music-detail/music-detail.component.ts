@@ -28,4 +28,8 @@ export class MusicDetailComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.musicList)
   }
+
+  playAudio(src: string): void {
+    this.mediaSrv.setAudioSrc(src);
+  }
 }

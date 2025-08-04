@@ -12,10 +12,12 @@ import {
   TranslateModule
 } from "@ngx-translate/core";
 import { PlyrComponent, PlyrModule } from 'ngx-plyr';
+import { Media, MediaService } from './services/media.service';
+import { AudioPlayerComponent } from "./components/audio-player/audio-player.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterModule, CommonModule, NgbModule, TranslateModule, TranslatePipe, TranslateDirective],
+  imports: [RouterOutlet, RouterModule, CommonModule, NgbModule, TranslateModule, TranslatePipe, TranslateDirective, AudioPlayerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -23,6 +25,8 @@ import { PlyrComponent, PlyrModule } from 'ngx-plyr';
 export class AppComponent implements OnInit {
   title = 'aninextweb';
   tabs: any = [];
+  audioSrc = '';
+  videoSrc = '';
   static Version: string = "0.2507.1.0";
   static CompileDate: string = "20250728";
   static Branch: string = "dev"
@@ -30,7 +34,7 @@ export class AppComponent implements OnInit {
   fontSize: number = localStorage["fontSize"] ? localStorage["fontSize"] : 0;
   highContrast: number = localStorage["highContrast"] ? localStorage["highContrast"] : 1;
 
-  constructor(private router: Router, private translate: TranslateService) {
+  constructor(private router: Router, private translate: TranslateService, private mediaService: MediaService) {
     this.tabs = [
       {
         id: 0,
@@ -55,11 +59,19 @@ export class AppComponent implements OnInit {
         text: 'navbar.lightnovel',
         symbol: 'fa-books',
         router: ['/lightnovel'],
+      },
+      {
+        id: 4,
+        prevHr: true,
+        text: 'navbar.funds',
+        symbol: 'fa-money-bill-transfer',
+        router: ['/funds'],
       }
     ];
     this.translate.addLangs(['zh-cn', 'ja-jp', 'en-us']);
     this.translate.setDefaultLang('zh-cn');
     this.translate.use('zh-cn');
+    this.mediaService.audioSrc$.subscribe(src => this.audioSrc = src);
   }
 
   IsPageActive(suburl: string): boolean {

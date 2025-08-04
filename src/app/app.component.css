@@ -2,7 +2,45 @@
     gap: .5rem
 }
 
-.nav-link > svg, .nav-link > i {
+.nav-link>svg,
+.nav-link>i {
     width: 1rem;
     height: 1rem;
+}
+
+[app-audio-player] {
+    position: sticky;
+    box-sizing: border-box;
+    bottom: 0rem;
+    border: var(--bs-border-width) solid var(--bs-border-color-translucent);
+    border-radius: 5rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.d-block {
+    display: flex;
+    align-items: end;
+}
+
+@media (max-width: 992px) {
+    .app-container>.row {
+        flex-direction: column;
+    }
+
+    .app-body {
+        flex: 1;
+        flex-grow: 1;
+    }
+
+    [app-audio-player] {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: none;
+    }
+
+    [app-audio-player] .plyr {
+        border: var(--bs-border-width) solid var(--bs-border-color-translucent);
+        border-radius: 5rem;
+    }
 }
