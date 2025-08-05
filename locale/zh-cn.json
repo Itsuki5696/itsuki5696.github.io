@@ -4,6 +4,7 @@
         "music": "音乐",
         "anime": "动漫",
         "lightnovel": "轻小说",
+        "funds": "持仓",
         "settings": "设置"
     },
     "settings": {
@@ -31,14 +32,15 @@
     },
     "music": {
         "search": "搜索...",
-        "noresult": "无结果"
+        "noresult": "无结果",
+        "album": "专辑"
     },
     "monetary": {
-        "CHN": "中国内地",
-        "HKG": "中国香港",
-        "USA": "美国",
-        "UAE": "阿联酋",
-        "PRT": "葡萄牙",
+        "cn": "中国内地",
+        "hk": "中国香港",
+        "us": "美国",
+        "ae": "阿联酋",
+        "pt": "葡萄牙",
         "USD": "美元",
         "CNY": "人民币",
         "EUR": "欧元",
@@ -47,6 +49,57 @@
         "stock": "个股",
         "bill": "债券",
         "deposit": "定期存款",
-        "cash": "现金"
+        "cash": "现金",
+        "search": "搜索...",
+        "noresult": "无结果",
+        "positions": "持仓",
+        "location": "购买地",
+        "currency": "币种",
+        "position-percentage": "持仓比例"
+    },
+    "plyr": {
+        "restart": "Restart",
+        "rewind": "Rewind {seektime}s",
+        "play": "播放",
+        "pause": "暂停",
+        "fastForward": "快进 {seektime}s",
+        "seek": "Seek",
+        "seekLabel": "{currentTime} of {duration}",
+        "played": "Played",
+        "buffered": "Buffered",
+        "currentTime": "Current time",
+        "duration": "时长",
+        "volume": "音量",
+        "mute": "静音",
+        "unmute": "Unmute",
+        "enableCaptions": "启用字幕",
+        "disableCaptions": "禁用字幕",
+        "download": "下载",
+        "enterFullscreen": "进入全屏模式",
+        "exitFullscreen": "退出全屏模式",
+        "frameTitle": "Player for {title}",
+        "captions": "字幕",
+        "settings": "设置",
+        "pip": "PIP",
+        "menuBack": "Go back to previous menu",
+        "speed": "速度",
+        "normal": "正常",
+        "quality": "质量",
+        "loop": "Loop",
+        "start": "Start",
+        "end": "End",
+        "all": "All",
+        "reset": "重置",
+        "disabled": "禁用",
+        "enabled": "启用",
+        "advertisement": "广告",
+        "qualityBadge": {
+            "2160": "4K",
+            "1440": "HD",
+            "1080": "HD",
+            "720": "HD",
+            "576": "SD",
+            "480": "SD"
+        }
     }
 }
