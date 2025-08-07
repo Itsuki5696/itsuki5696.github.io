@@ -4,6 +4,7 @@
         "music": "音乐",
         "anime": "动漫",
         "lightnovel": "轻小说",
+        "funds": "持仓",
         "settings": "设置"
     },
     "settings": {
@@ -31,14 +32,16 @@
     },
     "music": {
         "search": "搜索...",
-        "noresult": "无结果"
+        "noresult": "无结果",
+        "album": "专辑",
+        "nowplaying": "正在播放"
     },
     "monetary": {
-        "CHN": "中国内地",
-        "HKG": "中国香港",
-        "USA": "美国",
-        "UAE": "阿联酋",
-        "PRT": "葡萄牙",
+        "cn": "中国内地",
+        "hk": "中国香港",
+        "us": "美国",
+        "ae": "阿联酋",
+        "pt": "葡萄牙",
         "USD": "美元",
         "CNY": "人民币",
         "EUR": "欧元",
@@ -47,7 +50,13 @@
         "stock": "个股",
         "bill": "债券",
         "deposit": "定期存款",
-        "cash": "现金"
+        "cash": "现金",
+        "search": "搜索...",
+        "noresult": "无结果",
+        "positions": "持仓",
+        "location": "购买地",
+        "currency": "币种",
+        "position-percentage": "持仓比例"
     },
     "plyr": {
         "restart": "Restart",

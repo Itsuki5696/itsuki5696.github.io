@@ -6,7 +6,7 @@
                 <input class="form-control" [placeholder]="'music.search' | translate" type="search" (input)="onSearchChanged($event)" />
             </div>
         </div>
-        <h4>专辑</h4>
+        <h4 translate="music.album"></h4>
         @if (musicList.length == 0) {
         <p class="text-muted text-center" translate="music.noresult"></p>
         }

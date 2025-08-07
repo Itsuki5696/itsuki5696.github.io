@@ -1,5 +1,5 @@
 .img-cover {
-    max-width: 15rem;
+    max-width: 20rem;
     width: 100%;
     border-radius: var(--bs-border-radius);
     border: var(--bs-border-width) solid var(--bs-border-color-translucent)

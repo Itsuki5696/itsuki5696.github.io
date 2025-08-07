@@ -8,6 +8,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { AnimeDetailComponent } from './components/anime-detail/anime-detail.component';
 import { LightnovelDetailComponent } from './components/lightnovel-detail/lightnovel-detail.component';
 import { MusicArtistComponent } from './components/music-artist/music-artist.component';
+import { FundsComponent } from './components/funds/funds.component';
 
 export const routes: Routes = [
     { path: 'music', component: MusicComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
     { path: 'anime/:name', component: AnimeDetailComponent },
     { path: 'lightnovel', component: LightnovelComponent },
     { path: 'lightnovel/:name', component: LightnovelDetailComponent },
+    { path: 'funds', component: FundsComponent },
     { path: 'settings', component: SettingsComponent },
 
 

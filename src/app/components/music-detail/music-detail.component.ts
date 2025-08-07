@@ -14,7 +14,7 @@ import { AudioPlayerComponent } from "../audio-player/audio-player.component";
 })
 export class MusicDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
-  private mediaSrv = inject(MediaService);
+  public mediaSrv = inject(MediaService);
   src: string = "";
 
   // 1️⃣ 取得路由参数
@@ -23,7 +23,7 @@ export class MusicDetailComponent implements OnInit {
   // 2️⃣ 根据 album 取数据（这里示例返回 sync；真实场景可返回 Observable + async pipe）
   items = computed(() => this.mediaSrv.groupMediaByAlbum(this.mediaSrv.musicList, this.album()));
 
-  musicList = this.items();
+  musicList = this.items().sort((a, b) => a.id! - b.id!);
 
   ngOnInit(): void {
     console.log(this.musicList)

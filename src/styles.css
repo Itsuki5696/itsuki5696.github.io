@@ -112,12 +112,12 @@ body,
 }
 
 .app-container .d-lg-flex {
-    height: 100% !important;
+    height: 100vh !important;
 }
 
 .app-container .d-lg-flex nav.app-sidenav {
     background-color: var(--bs-tertiary-bg);
-    height: 100% !important;
+    height: 100vh !important;
     overflow-x: hidden;
     overflow-y: scroll;
     display: flex;
@@ -164,6 +164,7 @@ body,
 @media (min-width: 992px) {
     .app-container .app-body {
         padding: 2rem;
+        height: 100vh
     }
 }
 
