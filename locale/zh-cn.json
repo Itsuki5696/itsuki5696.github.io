@@ -33,7 +33,8 @@
     "music": {
         "search": "搜索...",
         "noresult": "无结果",
-        "album": "专辑"
+        "album": "专辑",
+        "nowplaying": "正在播放"
     },
     "monetary": {
         "cn": "中国内地",
